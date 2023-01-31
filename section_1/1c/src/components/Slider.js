@@ -1,7 +1,7 @@
-const Slider = () => {
+const Slider = ({ value }) => {
   return (
     <div>
-      <input type="range"></input>
+      <input type="range" defaultValue={value}></input>
     </div>
   );
 };
