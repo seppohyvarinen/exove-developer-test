@@ -4,11 +4,11 @@ import Image from "./components/Image";
 import { useState } from "react";
 
 function App() {
-  const [value, setValue] = useState(24);
+  const [transParency, setTransParency] = useState(24);
   return (
     <div className="App">
-      <Image />
-      <Slider value={value} />
+      <Image transParency={transParency} />
+      <Slider value={transParency} setValue={setTransParency} />
     </div>
   );
 }
