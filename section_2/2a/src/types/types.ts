@@ -1,4 +1,4 @@
 export type CarouselItemType = {
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
