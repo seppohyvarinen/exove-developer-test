@@ -11,11 +11,22 @@ async function getData() {
 
     let jsoned = await response.json();
 
-    //let create = await dbFunctions.createTable();
+    let create = await dbFunctions.createTable();
     jsoned.products.forEach((product) => {
+      let descFI = "";
+      let descES = "";
       translatte(product.description, { to: "fi" })
         .then((res) => {
-          console.log(res.text);
+          descFI = res.text;
+          console.log(descFI);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      translatte(product.description, { to: "es" })
+        .then((res) => {
+          descES = res.text;
+          console.log(descES);
         })
         .catch((err) => {
           console.error(err);
