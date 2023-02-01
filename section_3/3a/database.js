@@ -33,6 +33,8 @@ let dbFunctions = {
         }
       });
     }),
+
+  saveProducts: (product) => console.log(product),
 };
 
 export default dbFunctions;

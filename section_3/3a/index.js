@@ -11,30 +11,48 @@ async function getData() {
 
     let jsoned = await response.json();
 
-    let create = await dbFunctions.createTable();
-    jsoned.products.forEach((product) => {
-      let descFI = "";
-      let descES = "";
-      translatte(product.description, { to: "fi" })
-        .then((res) => {
-          descFI = res.text;
-          console.log(descFI);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-      translatte(product.description, { to: "es" })
-        .then((res) => {
-          descES = res.text;
-          console.log(descES);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    //let create = await dbFunctions.createTable();
+    jsoned.products.forEach(async (product) => {
+      let categories = "";
+
+      let translations = await translate(product);
+      product.categories.forEach((c) => {
+        categories += c.name + " ";
+      });
+
+      product.variations.forEach((variation) => {
+        let parsedProduct = {
+          id: product.id,
+          name: product.name,
+          description_en: product.description,
+          description_fi: translations.finnish,
+          description_es: translations.spanish,
+          price: 0.0,
+          categories: categories,
+        };
+        parsedProduct.price = variation.price;
+        if ("size" in variation) {
+          parsedProduct.name += " " + variation.size;
+        }
+
+        if ("paper size" in variation) {
+          parsedProduct.name += " " + variation["paper size"];
+        }
+        dbFunctions.saveProducts(parsedProduct);
+      });
     });
   } catch (error) {
     console.error(error);
   }
+}
+
+async function translate(product) {
+  let descFI = await translatte(product.description, { to: "fi" });
+  let descES = await translatte(product.description, { to: "es" });
+
+  let translation = { finnish: descFI.text, spanish: descES.text };
+
+  return translation;
 }
 
 getData();
