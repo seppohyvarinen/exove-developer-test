@@ -1,9 +1,9 @@
 import { CarouselItemType } from "../types/types";
 
-export const Item = ({ imageSrc, imageAlt }: CarouselItemType) => {
+export const Item = ({ imageSrc, imageAlt, classType }: CarouselItemType) => {
   return (
-    <li className="carousel-item">
+    <div className={classType}>
       <img src={imageSrc} alt={imageAlt} className="carousel-img" />
-    </li>
+    </div>
   );
 };

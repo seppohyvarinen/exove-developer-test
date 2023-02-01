@@ -31,13 +31,32 @@ export const Carousel = () => {
     setIndex(newIndex >= length ? 0 : newIndex);
   };
 
+  const setClass = (num: number) => {
+    const classArr = ["Card center-box"];
+    if (num === index) classArr.push("present");
+    if (num > index) classArr.push("next");
+    if (num < index) classArr.push("previous");
+    return classArr.join(" ");
+  };
+
   return (
     <div className="carousel-container">
       <button onClick={() => handlePrevious()}>{"<"}</button>
 
       <Item
-        imageSrc={items[index].imageSrc}
-        imageAlt={items[index].imageAlt}
+        imageSrc={items[0].imageSrc}
+        imageAlt={items[0].imageAlt}
+        classType={setClass(0)}
+      ></Item>
+      <Item
+        imageSrc={items[1].imageSrc}
+        imageAlt={items[1].imageAlt}
+        classType={setClass(1)}
+      ></Item>
+      <Item
+        imageSrc={items[2].imageSrc}
+        imageAlt={items[2].imageAlt}
+        classType={setClass(2)}
       ></Item>
 
       <button onClick={() => handleNext()}>{">"}</button>
