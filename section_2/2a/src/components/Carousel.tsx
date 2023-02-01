@@ -51,7 +51,9 @@ export const Carousel = () => {
 
   return (
     <div className="carousel-container">
-      <button onClick={() => handlePrevious()}>{"<"}</button>
+      <button className="button" onClick={() => handlePrevious()}>
+        {"◄"}
+      </button>
 
       <Item
         imageSrc={items[0].imageSrc}
@@ -69,7 +71,9 @@ export const Carousel = () => {
         classType={setClass(2)}
       ></Item>
 
-      <button onClick={() => handleNext()}>{">"}</button>
+      <button className="button" onClick={() => handleNext()}>
+        {"►"}
+      </button>
     </div>
   );
 };
