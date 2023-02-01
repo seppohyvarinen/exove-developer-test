@@ -7,3 +7,29 @@
   margin: 0 auto;
   padding: 20px 15px;
 }
+
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.carousel-list {
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-item {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.carousel-img {
+  width: 100%;
+  height: auto;
+  user-select: none;
+}

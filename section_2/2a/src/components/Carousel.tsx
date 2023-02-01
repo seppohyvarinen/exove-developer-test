@@ -15,11 +15,8 @@ export const Carousel: React.FC<{}> = () => {
   };
 
   return (
-    <div className="carousel">
-            <button onClick={handlePrevious}>Previous</button>
-            <button onClick={handleNext}>Next</button>
-            <p>{index}</p>
-          
+    <div className="carousel-container">
+      <ul className="carousel-list"></ul>
     </div>
   );
 };

@@ -20,7 +20,7 @@ function App() {
   ];
   return (
     <div className="mainContainer">
-      <Carousel></Carousel>
+      <Carousel items={carouselItems} />
     </div>
   );
 }
