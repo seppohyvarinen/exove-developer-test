@@ -11,7 +11,8 @@ async function getData() {
 
     let jsoned = await response.json();
 
-    //let create = await dbFunctions.createTable();
+    let create = await dbFunctions.createTable();
+    console.log(create);
     jsoned.products.forEach(async (product) => {
       let categories = "";
 
@@ -20,7 +21,7 @@ async function getData() {
         categories += c.name + " ";
       });
 
-      product.variations.forEach((variation) => {
+      product.variations.forEach(async (variation) => {
         let parsedProduct = {
           id: product.id,
           name: product.name,
@@ -38,8 +39,12 @@ async function getData() {
         if ("paper size" in variation) {
           parsedProduct.name += " " + variation["paper size"];
         }
-        dbFunctions.saveProducts(parsedProduct);
+
+        let save = await dbFunctions.saveProducts(parsedProduct);
+        console.log(save);
       });
+
+      console.log("Done");
     });
   } catch (error) {
     console.error(error);
