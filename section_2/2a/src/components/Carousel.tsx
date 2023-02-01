@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { CarouselItemType } from "../types/types";
 import { Item } from "./Item";
@@ -20,7 +20,17 @@ export const Carousel = () => {
       imageAlt: "Smiley that says I don't know",
     },
   ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRolling();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [index]);
 
+  const handleRolling = () => {
+    console.log("hello");
+    handleNext();
+  };
   const handlePrevious = () => {
     const newIndex = index - 1;
     setIndex(newIndex < 0 ? length - 1 : newIndex);
