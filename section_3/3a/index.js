@@ -40,11 +40,8 @@ async function getData() {
           parsedProduct.name += " " + variation["paper size"];
         }
 
-        let save = await dbFunctions.saveProducts(parsedProduct);
-        console.log(save);
+        await dbFunctions.saveProducts(parsedProduct);
       });
-
-      console.log("Done");
     });
   } catch (error) {
     console.error(error);
