@@ -9,6 +9,7 @@ It's an async function that first fetches data from the API (or in this case git
 and then transforms it to json.
 A table is then created (if it doesn't already exist) and then the json is parsed and a "parsedProduct"
 object is passed to the database function that handles saving the data to SQL database.
+Uses try-catch-finally structure.
 */
 async function getData() {
   try {
