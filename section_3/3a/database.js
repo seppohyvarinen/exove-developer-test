@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import mysql from "mysql";
 
+//Configuration for the mysql modules createPool function. These properties are stored in
+// the .env file so they are secured.
 let config = {
   connectionLimit: 10,
   host: process.env.DB_HOST,
@@ -11,6 +13,7 @@ let config = {
 };
 let pool = mysql.createPool(config);
 
+// Functions that give logs when connections are acquired and released.
 pool.on("acquire", function (connection) {
   console.log("***");
   console.log("Connection %d acquired", connection.threadId);
@@ -20,7 +23,13 @@ pool.on("release", function (connection) {
   console.log("Connection %d released", connection.threadId);
 });
 
+//These functions are exported so the index.js can use them
+
 let dbFunctions = {
+  /**
+   * This function is used to create a new table to the database.
+    If the table already exists, it is not created.
+   */
   createTable: () =>
     new Promise((resolve, reject) => {
       let sql =
@@ -34,6 +43,13 @@ let dbFunctions = {
       });
     }),
 
+  /**
+   * This function is used to save a new tag to tags table in the database.
+   * The parameter "product" is the object that contains all the data that is wanted to store to the database.
+   * pool.escape() is used to prevent SQL injection (although in this case the app doesn't deal with user input)
+   * If there is a chance of duplicate entry then fields are just updated.
+   * The function returns a Promise that is resolved or rejected.
+   */
   saveProducts: (product) =>
     new Promise((resolve, reject) => {
       let sql =
