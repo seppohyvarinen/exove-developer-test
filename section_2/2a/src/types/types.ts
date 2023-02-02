@@ -3,3 +3,7 @@ export type CarouselItemType = {
   imageAlt?: string;
   classType?: string;
 };
+
+export type CarouselType = {
+  rolling?: boolean;
+};

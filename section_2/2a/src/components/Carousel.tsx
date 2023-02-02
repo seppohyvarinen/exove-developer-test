@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import { CarouselItemType } from "../types/types";
+import { CarouselType } from "../types/types";
 import { Item } from "./Item";
 
-export const Carousel = () => {
+export const Carousel = ({ rolling }: CarouselType) => {
   const [index, setIndex] = useState<number>(0);
   const length = 3;
   const items = [
@@ -22,15 +22,11 @@ export const Carousel = () => {
   ];
   useEffect(() => {
     const interval = setInterval(() => {
-      handleRolling();
+      rolling && handleNext();
     }, 3000);
     return () => clearInterval(interval);
-  }, [index]);
+  }, [index, rolling]);
 
-  const handleRolling = () => {
-    console.log("hello");
-    handleNext();
-  };
   const handlePrevious = () => {
     const newIndex = index - 1;
     setIndex(newIndex < 0 ? length - 1 : newIndex);
