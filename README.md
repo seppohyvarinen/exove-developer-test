@@ -8,12 +8,13 @@ the directories with the code for each assignment.
 
 A simple slider application with React. The slider triggers a change in the squares opacity
 after user releases the slider. The value is stored in state and is also displayed in the middle
-of the square.
+of the square. To test this application, from the root (1c folder) npm install && npm start
 ![Demo pic](screenshots/screenshot3.png)
 
 # 2A
 
 A carousel application with React & TypeScript. Automatically rolls the carousel of three smiley pictures.
+To test this application, from the root (2a folder) npm install && npm start
 
 ![Demo pic](screenshots/screenshot1.png).
 
