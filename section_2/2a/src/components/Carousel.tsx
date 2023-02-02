@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { CarouselType } from "../types/types";
 import { Item } from "./Item";
+import "./Carousel.css";
 
 /*  Component for the carousel and it's functionality.
     Carousel component is typed as CarouselType which has "rolling" property, a boolean value

@@ -1,4 +1,5 @@
 import { CarouselItemType } from "../types/types";
+import "./Item.css";
 
 /*  Component for the Item.
     Item component is typed as CarouselItemType which has three properties: imageSrc (image source as string),
