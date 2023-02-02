@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import { CarouselType } from "../types/types";
 import { Item } from "./Item";
 
+/*  Component for the carousel and it's functionality.
+    Carousel component is typed as CarouselType which has "rolling" property, a boolean value
+    of whether carousel should roll or not.
+*/
+
 export const Carousel = ({ rolling }: CarouselType) => {
+  //State defines which image is visible
   const [index, setIndex] = useState<number>(0);
   const length = 3;
   const items = [
@@ -20,6 +26,11 @@ export const Carousel = ({ rolling }: CarouselType) => {
       imageAlt: "Smiley that says I don't know",
     },
   ];
+
+  /*
+  This useEffect handles the automatic rolling. It is called every 3 seconds
+  and if the rolling prop is true, the index state is incremented with handleNext() function
+ */
   useEffect(() => {
     const interval = setInterval(() => {
       rolling && handleNext();
@@ -27,16 +38,21 @@ export const Carousel = ({ rolling }: CarouselType) => {
     return () => clearInterval(interval);
   }, [index, rolling]);
 
+  // Decrements the state, in other words handles showing the previous picture
   const handlePrevious = () => {
     const newIndex = index - 1;
     setIndex(newIndex < 0 ? length - 1 : newIndex);
   };
-
+  // Increments the state, in other words handles showing the next picture
   const handleNext = () => {
     const newIndex = index + 1;
     setIndex(newIndex >= length ? 0 : newIndex);
   };
 
+  /* This function returns a array of strings that are essentially css class names.
+     The classNames are then passed to Item components and define how the Items are positioned,
+     in other words are they visible to user or not.
+ */
   const setClass = (num: number) => {
     const classArr = ["Card center-box"];
     if (num === index) classArr.push("present");

@@ -1,3 +1,5 @@
+//File for types used in the application.
+
 export type CarouselItemType = {
   imageSrc?: string;
   imageAlt?: string;
