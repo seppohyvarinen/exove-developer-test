@@ -78,6 +78,7 @@ button {
   box-shadow: rgba(230, 137, 243, 0.25) 0px 34px 35px,
     rgba(0, 0, 0, 0.12) 0px -12px 20px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  cursor: pointer;
 }
 .button:hover {
   color: #fff;
@@ -85,4 +86,22 @@ button {
 
   transform: scale(0.9);
   transition: 0.5s;
+}
+
+.controlsPlay {
+  width: 100px;
+  height: 40px;
+  color: green;
+  background-color: #effbff;
+  position: relative;
+  bottom: 30px;
+}
+
+.controlsStop {
+  width: 100px;
+  height: 40px;
+  background-color: #ffd3e7;
+  color: red;
+  position: relative;
+  bottom: 30px;
 }

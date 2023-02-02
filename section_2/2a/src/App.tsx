@@ -13,9 +13,13 @@ function App() {
     <div className="App">
       <div className="mainContainer">
         {rolling ? (
-          <button onClick={() => handleClick()}>Stop</button>
+          <button className="controlsStop" onClick={() => handleClick()}>
+            ◼
+          </button>
         ) : (
-          <button onClick={() => handleClick()}>Play</button>
+          <button className="controlsPlay" onClick={() => handleClick()}>
+            ▶
+          </button>
         )}
 
         <Carousel rolling={rolling} />
