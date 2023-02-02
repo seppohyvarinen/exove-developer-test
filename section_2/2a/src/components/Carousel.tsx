@@ -64,7 +64,11 @@ export const Carousel = ({ rolling }: CarouselType) => {
 
   return (
     <div className="carousel-container">
-      <button className="button" onClick={() => handlePrevious()}>
+      <button
+        title="Previous image"
+        className="button"
+        onClick={() => handlePrevious()}
+      >
         {"◄"}
       </button>
 
@@ -84,7 +88,11 @@ export const Carousel = ({ rolling }: CarouselType) => {
         classType={setClass(2)}
       ></Item>
 
-      <button className="button" onClick={() => handleNext()}>
+      <button
+        title="Next image"
+        className="button"
+        onClick={() => handleNext()}
+      >
         {"►"}
       </button>
     </div>

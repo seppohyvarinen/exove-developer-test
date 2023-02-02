@@ -8,8 +8,10 @@ import { useState } from "react";
 */
 
 function App() {
+  //This boolean state is passed to Carousel component and it defines whether automatic rolling is on or off
   const [rolling, setRolling] = useState<boolean>(true);
 
+  //Toggles the rolling state to false or true
   const handleClick = () => {
     setRolling(!rolling);
   };
@@ -17,11 +19,19 @@ function App() {
     <div className="App">
       <div className="mainContainer">
         {rolling ? (
-          <button className="controlsStop" onClick={() => handleClick()}>
+          <button
+            title="Stop the carousel"
+            className="controlsStop"
+            onClick={() => handleClick()}
+          >
             ◼
           </button>
         ) : (
-          <button className="controlsPlay" onClick={() => handleClick()}>
+          <button
+            title="Play the carousel"
+            className="controlsPlay"
+            onClick={() => handleClick()}
+          >
             ▶
           </button>
         )}
