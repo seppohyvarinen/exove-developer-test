@@ -24,6 +24,7 @@ The application also contains a button which user can use to stop or play the ca
 # 3A
 
 A program that fetches data from the API (or in this case the github repo) and saves it to SQL Database.
+I used Node.js for this.
 My solution to handle data with variations was to make separate products out of items that have variations in size.
 I also used a library called "translatte" to automate translation process. The data is saved now in three different
 languages (fi, en & es). Translatte by default uses Google Translate, so at least in case of finnish the translations
