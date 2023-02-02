@@ -86,6 +86,17 @@ let dbFunctions = {
         }
       });
     }),
+
+  closeConnection: () =>
+    new Promise((resolve, reject) => {
+      pool.end((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve("Data saved, connections closed!");
+        }
+      });
+    }),
 };
 
 export default dbFunctions;

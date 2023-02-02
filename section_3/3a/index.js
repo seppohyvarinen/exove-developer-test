@@ -20,7 +20,8 @@ async function getData() {
 
     let create = await dbFunctions.createTable();
     console.log(create);
-    jsoned.products.forEach(async (product) => {
+
+    for (const product of jsoned.products) {
       let categories = "";
 
       let translations = await translate(product);
@@ -28,7 +29,7 @@ async function getData() {
         categories += c.name + " ";
       });
 
-      product.variations.forEach(async (variation) => {
+      for (const variation of product.variations) {
         let parsedProduct = {
           id: product.id,
           name: product.name,
@@ -48,10 +49,14 @@ async function getData() {
         }
 
         await dbFunctions.saveProducts(parsedProduct);
-      });
-    });
+      }
+    }
   } catch (error) {
     console.error(error);
+  } finally {
+    let message = await dbFunctions.closeConnection();
+
+    console.log(message);
   }
 }
 
