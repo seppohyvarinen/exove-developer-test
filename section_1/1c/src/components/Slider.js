@@ -1,6 +1,7 @@
+import "./Slider.css";
+
 const Slider = ({ value, setValue }) => {
   const handleRelease = (e) => {
-    console.log("setting level", e.target.value);
     setValue(e.target.value);
   };
   return (

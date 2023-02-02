@@ -1,3 +1,5 @@
+import "./Image.css";
+
 const Image = ({ transParency }) => {
   return (
     <div className="transParentImg" style={{ opacity: transParency / 100 }}>
