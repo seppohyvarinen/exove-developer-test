@@ -1,3 +1,7 @@
+/*
+    css styles for the Slider component
+*/
+
 input[type="range"] {
   height: 39px;
   -webkit-appearance: none;
